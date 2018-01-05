@@ -15,6 +15,6 @@ def performActions():
 		previousActionType = actionType
 
 def run():
-	#animationControl.setAnimationState(owner.name, 0, -1)
+	#animationControl.setAnimationState(owner.name, 0, 0)
 	performActions()
 	

@@ -3,6 +3,7 @@ import random
 from Objects.Scripts.Animations import animationControl
 owner = bge.logic.getCurrentController().owner
 animationControl.setAnimationState(owner.name, 0, 1)
+currentFrame = 0
 
 def leanforwards():
 	animationControl.snapJointRotate(owner.name,"spine1","spine2","x",10)
@@ -60,72 +61,92 @@ def legsarchedstraight():
 	animationControl.snapJointRotate(owner.name,"thighright","spine1","x",0)
 	animationControl.snapJointRotate(owner.name,"thighright","calfright","x",0)
 	animationControl.snapJointRotate(owner.name,"calfright","footright","x",0)
-	animationControl.snapJointRotate(owner.name,"thighleft","spine1","y",-30)
-	animationControl.snapJointRotate(owner.name,"thighright","spine1","y",30)
+	animationControl.snapJointRotate(owner.name,"thighleft","spine1","y",-10)
+	animationControl.snapJointRotate(owner.name,"thighright","spine1","y",10)
 
 def walkleft():
 	animationControl.snapJointRotate(owner.name,"thighleft","spine1","x",-30)
-	animationControl.snapJointRotate(owner.name,"calfleft","thighleft","x",90)
-	animationControl.snapJointRotate(owner.name,"thighright","spine1","x",60)
-	animationControl.snapJointRotate(owner.name,"calfright","thighright","x",0)
+	animationControl.snapJointRotate(owner.name,"thighright","spine1","x",30)
+	animationControl.snapJointRotate(owner.name,"thighright","calfright","x",0)
+	animationControl.snapJointRotate(owner.name,"thighleft","calfleft","x",0)
+
 	animationControl.snapJointRotate(owner.name,"thighleft","spine1","y",5)
-	animationControl.snapJointRotate(owner.name,"thighright","spine1","y",-30)
-
-	#animationControl.setObjectMass(owner.name,"calfleft",5.111)
-	#animationControl.setObjectMass(owner.name,"footleft",10)
-	#animationControl.setObjectMass(owner.name,"calfright",70.111)
-	#animationControl.setObjectMass(owner.name,"footright",100)
-	animationControl.haltObject(owner.name,"footright")
-	animationControl.haltObject(owner.name,"spine1")
-	animationControl.haltObject(owner.name,"spine2")
-	animationControl.haltObject(owner.name,"spine3")
-	animationControl.haltObject(owner.name,"head")
-	animationControl.applyForceToObject(owner.name,"calfright",0,-1000,0,5)
-	#animationControl.applyForceToObject(owner.name,"spine1",0,-1000,0,5)
-	#animationControl.applyForceToObject(owner.name,"spine2",0,-1000,0,5)
-	#animationControl.applyForceToObject(owner.name,"spine3",0,-1000,0,5)
-	animationControl.applyForceToObject(owner.name,"head",0,-1000,0,5)
-
-def walkright():
-	animationControl.snapJointRotate(owner.name,"thighleft","spine1","x",60)
-	animationControl.snapJointRotate(owner.name,"calfleft","thighleft","x",0)
-	animationControl.snapJointRotate(owner.name,"thighright","spine1","x",-30)
-	animationControl.snapJointRotate(owner.name,"calfright","thighright","x",90)
-	animationControl.snapJointRotate(owner.name,"thighleft","spine1","y",30)
 	animationControl.snapJointRotate(owner.name,"thighright","spine1","y",-5)
 
-	#animationControl.setObjectMass(owner.name,"calfleft",70.111)
-	#animationControl.setObjectMass(owner.name,"footleft",100)
-	#animationControl.setObjectMass(owner.name,"calfright",5.111)
-	#animationControl.setObjectMass(owner.name,"footright",10)
-	animationControl.haltObject(owner.name,"footleft")
-	animationControl.haltObject(owner.name,"spine1")
-	animationControl.haltObject(owner.name,"spine2")
-	animationControl.haltObject(owner.name,"spine3")
-	animationControl.haltObject(owner.name,"head")
-	animationControl.applyForceToObject(owner.name,"calfright",0,-1000,0,5)
-	#animationControl.applyForceToObject(owner.name,"spine1",0,-1000,0,5)
-	#animationControl.applyForceToObject(owner.name,"spine2",0,-1000,0,5)
-	#animationControl.applyForceToObject(owner.name,"spine3",0,-1000,0,5)
-	animationControl.applyForceToObject(owner.name,"head",0,-1000,0,5)
+	animationControl.applyForceToObject(owner.name,"head",0,-500,0,1)
+	animationControl.applyForceToObject(owner.name,"footleft",0,-1000,0,1)
+
+	#animationControl.snapJointRotate(owner.name,"thighleft","spine1","x",-30)
+
+	#animationControl.setObjectMass(owner.name,"calfleft",5.111)
+
+	#animationControl.haltObject(owner.name,"head")
+
+	#animationControl.applyForceToObject(owner.name,"head",0,-1000,0,5)
+
+def walkright():
+	animationControl.snapJointRotate(owner.name,"thighleft","spine1","x",10)
+	animationControl.snapJointRotate(owner.name,"thighright","spine1","x",-30)
+	animationControl.snapJointRotate(owner.name,"thighright","calfright","x",0)
+	animationControl.snapJointRotate(owner.name,"thighleft","calfleft","x",0)
+
+	animationControl.snapJointRotate(owner.name,"thighleft","spine1","y",5)
+	animationControl.snapJointRotate(owner.name,"thighright","spine1","y",-5)
+
+	animationControl.applyForceToObject(owner.name,"head",0,-500,0,1)
+	animationControl.applyForceToObject(owner.name,"footright",0,-1000,0,1)
+
+def kneeupright():
+	animationControl.snapJointRotate(owner.name,"thighleft","spine1","x",10)
+	animationControl.snapJointRotate(owner.name,"thighright","spine1","x",-60)
+
+	animationControl.snapJointRotate(owner.name,"thighleft","spine1","y",0)
+	animationControl.snapJointRotate(owner.name,"thighright","spine1","y",0)
+
+	animationControl.snapJointRotate(owner.name,"thighright","calfright","x",60)
+	animationControl.snapJointRotate(owner.name,"thighleft","calfleft","x",0)
+	animationControl.applyForceToObject(owner.name,"head",0,-1000,0,1)
+	animationControl.applyForceToObject(owner.name,"footright",0,-500,0,1)
+
+def kneeupleft():
+	animationControl.snapJointRotate(owner.name,"thighleft","spine1","x",-60)
+	animationControl.snapJointRotate(owner.name,"thighright","spine1","x",10)
+
+	animationControl.snapJointRotate(owner.name,"thighleft","spine1","y",0)
+	animationControl.snapJointRotate(owner.name,"thighright","spine1","y",0)
+
+	animationControl.snapJointRotate(owner.name,"thighleft","calfleft","x",60)
+	animationControl.snapJointRotate(owner.name,"thighright","calfright","x",0)
+	animationControl.applyForceToObject(owner.name,"head",0,-1000,0,1)
+	animationControl.applyForceToObject(owner.name,"footright",0,-500,0,1)
 
 def animationlayer1():
+	global currentFrame
 	if(animationControl.checkAnimationState(owner.name, 0, 0)):
-		randomImpulseWalk = random.randint(0,8)
+		randomImpulseWalk = currentFrame
+		#randomImpulseWalk = random.randint(0,5)
 		if(randomImpulseWalk == 0):
 			legsstraight()
 			leftarmstraight()
 			rightarmstraight()
 		elif(randomImpulseWalk == 1):
-			walkleft()
-			rightarmbend()
+			kneeupright()
+			leftarmstraight()
+			rightarmstraight()
 		elif(randomImpulseWalk == 2):
 			walkright()
 			leftarmbend()
+			rightarmstraight()
 		elif(randomImpulseWalk == 3):
-			legsarchedstraight()
-		elif(randomImpulseWalk == 4):
-			legsstraight()
+			kneeupleft()
+			leftarmstraight()
+			rightarmstraight()
+		else:
+			walkleft()
+			rightarmbend()
+			leftarmstraight()
+			currentFrame = 0
+		currentFrame += 1
 	elif(animationControl.checkAnimationState(owner.name, 0, 1)):
 		randomImpulseIdle = random.randint(0,6)
 		if(randomImpulseIdle == 0):

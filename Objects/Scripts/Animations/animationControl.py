@@ -22,7 +22,6 @@ def applyForceToObject(ownerName,jointName,forceAmountX,forceAmountY,forceAmount
 	jointObject = scene.objects[characterName + jointName]
 	forceAmount = [forceAmountX,forceAmountY,forceAmountZ]
 	for impulse in range(ticks):
-		print("applying " + str(forceAmount) + " to " + jointObject.name)
 		jointObject.applyForce(forceAmount,True)
 
 #set the current frame state of the animation for the character
