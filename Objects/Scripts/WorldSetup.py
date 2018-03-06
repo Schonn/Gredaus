@@ -14,12 +14,12 @@ def setupGredaus():
 
 def createConstraints():
     #find constraint set objects for all characters in the scene
-    for possibleConstraintSet in scene.objects:
+    for possibleConstraintSet in scene.objects: #look through all objects starting wtih constraintSet_ to indicate the name of constraints
         if(str(possibleConstraintSet).find("constraintSet_") != -1):
             constraintSetName = str(possibleConstraintSet)
             owner[constraintSetName] = scene.objects[constraintSetName]
             constraintSetObject = scene.objects[constraintSetName]
-            constraintSetObject["characterName"] = constraintSetName[14:]
+            constraintSetObject["characterName"] = constraintSetName[14:] #use the character 
             for possibleConstraint in scene.objects:
                 if(scene.objects[str(possibleConstraint)].name.find(constraintSetObject["characterName"]+"con_") != -1):
                     constraintObjects = scene.objects[str(possibleConstraint)].name[len(constraintSetObject["characterName"]+"con_"):]
