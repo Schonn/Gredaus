@@ -4,7 +4,7 @@ scene = bge.logic.getCurrentScene()
 owner = bge.logic.getCurrentController().owner
 
 def findPhysicsObjects():
-	planetMassThreshold = 10000 #how much mass must it have before it becomes
+	planetMassThreshold = 10000 #how much mass must it have before it becomes a planet
 	negativeGravityTrigger = 0.111 #how much mass float triggers negative gravity on an object
 	noGravityTrigger = 0.222 #how much mass float triggers no gravity on an object
 	for potentialPhysicsObjectName in scene.objects:
