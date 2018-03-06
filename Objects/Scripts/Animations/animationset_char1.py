@@ -20,7 +20,7 @@ def leftarmbend():
 
 def rightarmbend():
 	animationControl.snapJointRotate(owner.name,"lowerarmright","upperarmright","z",80)
-	animationControl.snapJointRotate(owner.name,"upperarmright","spine3","z",-50)
+	animationControl.snapJointRotate(owner.name,"upperarmright","spine3","z",50)
 	animationControl.snapJointRotate(owner.name,"upperarmright","spine3","y",-80)
 
 
@@ -123,21 +123,21 @@ def kneeupleft():
 def animationlayer1():
 	global currentFrame
 	if(animationControl.checkAnimationState(owner.name, 0, 0)):
-		randomImpulseWalk = currentFrame
-		#randomImpulseWalk = random.randint(0,5)
-		if(randomImpulseWalk == 0):
+		if(currentFrame == 0):
 			legsstraight()
 			leftarmstraight()
 			rightarmstraight()
-		elif(randomImpulseWalk == 1):
+		elif(currentFrame == 1):
+			legsstraight()
 			kneeupright()
 			leftarmstraight()
 			rightarmstraight()
-		elif(randomImpulseWalk == 2):
+		elif(currentFrame == 2):
 			walkright()
 			leftarmbend()
 			rightarmstraight()
-		elif(randomImpulseWalk == 3):
+		elif(currentFrame == 3):
+			legsstraight()
 			kneeupleft()
 			leftarmstraight()
 			rightarmstraight()
